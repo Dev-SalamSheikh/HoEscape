@@ -6,7 +6,24 @@ const Login = () => {
     <div className="loginPage">
       {/* logo */}
       <div className="logo">
-        <img src="./images/login-logo.png" alt="logo" />
+        <NavLink to="/">
+          <img src="./images/login-logo.svg" alt="logo" />
+        </NavLink>
+      </div>
+
+      {/* Overlay One */}
+      <div className="overlay_one">
+        <img src="./images/login-overlay-1.svg" alt="" />
+      </div>
+
+      {/* Overlay One */}
+      <div className="overlay_two">
+        <img src="./images/login-overlay-2.svg" alt="" />
+      </div>
+
+      {/* Overlay One */}
+      <div className="overlay_three">
+        <img src="./images/login-overlay-3.svg" alt="" />
       </div>
 
       {/* Form */}

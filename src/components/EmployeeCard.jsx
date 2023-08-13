@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const EmployeeCard = () => {
   const [showEmpStatistics, setShowEmpStatistics] = useState(false);
@@ -58,10 +59,27 @@ const EmployeeCard = () => {
       </div>
 
       {/* Statistics  */}
-      <div
-        className={`emp_statistics ${
-          showEmpStatistics === true ? "active" : ""
-        }`}
+      <motion.div
+        className="emp_statistics"
+        initial={{
+          height: "0",
+          border: "2px solid transparent",
+          borderRadius: "none",
+          padding: "0px",
+          marginBottom: "0px",
+          opacity: 1,
+        }}
+        animate={{
+          height: showEmpStatistics ? "200px" : "0",
+          border: showEmpStatistics
+            ? "2px solid #efefef"
+            : "2px solid transparent",
+          borderRadius: showEmpStatistics ? "8px" : "none",
+          marginBottom: showEmpStatistics ? "20px" : "0px",
+          opacity: showEmpStatistics ? 1 : 0,
+        }}
+        transition={{ duration: 0.4 }}
+        style={{ overflow: "hidden" }}
       >
         <div className="banner_cards">
           {/* Card Left */}
@@ -139,7 +157,7 @@ const EmployeeCard = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

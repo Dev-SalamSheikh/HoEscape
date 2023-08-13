@@ -11,7 +11,7 @@ const Notification = () => {
         justifyContent: "center",
         position: "absolute",
         right: "15px",
-        top: "30%",
+        top: "33%",
       }}
     >
       <span

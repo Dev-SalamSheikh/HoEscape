@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const DashboardTopBar = () => {
+  const ref = useRef();
+  const ref2 = useRef();
+
   // select timeframe data array
   const timeFrame = [
     "Last 7 days",
@@ -13,6 +16,19 @@ const DashboardTopBar = () => {
 
   // state for show the dropdown
   const [showDropdown, setShowDropdown] = useState(false);
+
+  // UseEffect Function for Handle Popup Open Close
+  useEffect(() => {
+    const closePopup = (e) => {
+      if (!ref.current.contains(e.target) && !ref2.current.contains(e.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("click", closePopup);
+    return () => {
+      document.removeEventListener("click", closePopup);
+    };
+  }, []);
 
   // state for current timeframe state
   const [selectedTimeframe, setSelectedTimeframe] = useState("Last 7 days");
@@ -41,6 +57,7 @@ const DashboardTopBar = () => {
           {/* filter menu */}
           <div
             className="filter-menu"
+            ref={ref}
             onClick={() => setShowDropdown(!showDropdown)}
           >
             {/* Icon */}
@@ -85,7 +102,7 @@ const DashboardTopBar = () => {
 
             {/* dropdown */}
             {showDropdown === true ? (
-              <div className="dropdown">
+              <div className="dropdown" ref={ref2}>
                 <ul>
                   {timeFrame?.map((item, index) => (
                     <li onClick={() => setSelectedTimeframe(item)} key={index}>

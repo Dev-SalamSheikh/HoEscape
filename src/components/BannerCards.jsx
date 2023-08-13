@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import "../styles/Dashboard/dashboard.scss";
 import ProgressItem from "./ProgressItem";
+import { motion } from "framer-motion";
 
 const BannerCards = () => {
   // data for progress cards
@@ -41,6 +43,22 @@ const BannerCards = () => {
     },
   ];
 
+  const [count, setCount] = useState(0);
+
+  const targetValue = 1203;
+  const duration = 0.8; // Animation duration in seconds
+
+  useEffect(() => {
+    if (count < targetValue) {
+      const increment = Math.ceil(targetValue / (duration * 60));
+      const interval = setInterval(() => {
+        setCount((prevCount) => Math.min(prevCount + increment, targetValue));
+      }, 1000 / 60);
+
+      return () => clearInterval(interval);
+    }
+  }, [count]);
+
   return (
     <div className="banner_cards">
       {/* Card Left */}
@@ -53,7 +71,13 @@ const BannerCards = () => {
 
         {/* Counter */}
         <div className="counter">
-          <h1 className="jakarta">1,203</h1>
+          <motion.h1
+            className="jakarta"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            {count.toLocaleString()}
+          </motion.h1>
         </div>
 
         {/* statistics */}

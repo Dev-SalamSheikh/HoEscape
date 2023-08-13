@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const ProgressItem = ({ width, bgColor, name, time }) => {
   return (
     <>
@@ -13,10 +15,13 @@ const ProgressItem = ({ width, bgColor, name, time }) => {
 
         {/* progressbar */}
         <div className="progressBar">
-          <div
+          <motion.div
             className="bar"
-            style={{ width: width, background: bgColor }}
-          ></div>
+            initial={{ width: 0 }}
+            animate={{ width: width }}
+            transition={{ duration: 1 }}
+            style={{ background: bgColor }}
+          ></motion.div>
         </div>
       </div>
     </>

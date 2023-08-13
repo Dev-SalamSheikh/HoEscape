@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar";
 import "./styles/main.scss";
 import NavBar from "./components/NavBar";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 function App() {
   // state
@@ -10,18 +11,19 @@ function App() {
   return (
     <div className="main">
       <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
-      <div
+      <motion.div
         className="pages-container"
+        initial={{ paddingLeft: "260px" }}
+        animate={{ paddingLeft: showSidebar === true ? "260px" : "100px" }}
+        transition={{ duration: 0.3 }}
         style={{
           width: "100%",
-          paddingLeft: showSidebar === true ? "270px" : "100px",
           paddingRight: "70px",
-          transition: "padding 0.2s ease",
         }}
       >
         <NavBar />
         <Outlet />
-      </div>
+      </motion.div>
     </div>
   );
 }

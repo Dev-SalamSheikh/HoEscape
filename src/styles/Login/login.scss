@@ -2,21 +2,41 @@
 
 .loginPage {
   min-height: 100vh;
-  background: url("../../../public/images/login-banner.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   position: relative;
-
   display: flex;
   align-items: center;
   justify-content: center;
+  isolation: isolate;
+
+  .overlay_one {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -3;
+  }
+
+  .overlay_two {
+    position: absolute;
+    left: 0;
+    top: 10%;
+    z-index: -2;
+  }
+
+  .overlay_three {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -2;
+    img {
+      width: 700px;
+    }
+  }
 
   .logo {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 10px;
+    top: 15px;
   }
 
   .login_form {
@@ -72,6 +92,7 @@
             border: 1px solid $searchBorder;
             border-radius: 8px;
             box-shadow: $inputShadow;
+            outline: none;
           }
         }
 

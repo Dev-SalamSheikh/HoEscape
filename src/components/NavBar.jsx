@@ -1,10 +1,46 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../styles/Navbar/navbar.scss";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
+  // refs
+  const ref = useRef();
+  const ref2 = useRef();
+  const ref3 = useRef();
+  const ref4 = useRef();
+
   // states
   const [showNotificationPopup, setShowNotificationPopup] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
+
+  // UseEffect Function for Handle Popup Open Close
+  useEffect(() => {
+    const closePopup = (e) => {
+      if (!ref.current.contains(e.target) && !ref2.current.contains(e.target)) {
+        setShowNotificationPopup(false);
+      }
+    };
+    document.addEventListener("click", closePopup);
+    return () => {
+      document.removeEventListener("click", closePopup);
+    };
+  }, []);
+
+  // UseEffect Function for Handle Popup Open Close
+  useEffect(() => {
+    const closePopup = (e) => {
+      if (
+        !ref3.current.contains(e.target) &&
+        !ref4.current.contains(e.target)
+      ) {
+        setShowLogout(false);
+      }
+    };
+    document.addEventListener("click", closePopup);
+    return () => {
+      document.removeEventListener("click", closePopup);
+    };
+  }, []);
 
   return (
     <div className="navbar">
@@ -99,8 +135,9 @@ const NavBar = () => {
       <div className="nav_right">
         {/* notification icon box */}
         <div
+          ref={ref}
           className="notification_box"
-          onClick={() => setShowNotificationPopup(!showNotificationPopup)}
+          onClick={() => setShowNotificationPopup(true)}
         >
           {/* Icon */}
           <svg
@@ -125,7 +162,7 @@ const NavBar = () => {
 
           {/* Notifications popup*/}
           {showNotificationPopup === true ? (
-            <div className="notification_popup">
+            <div className="notification_popup" ref={ref2}>
               <ul>
                 <li className="jakarta">Notification 1</li>
                 <li className="jakarta">Notification 2</li>
@@ -140,7 +177,8 @@ const NavBar = () => {
         {/* Profile */}
         <div
           className="profile_info"
-          onClick={() => setShowLogout(!showLogout)}
+          ref={ref3}
+          onClick={() => setShowLogout(true)}
         >
           {/* image */}
           <img src="./images/avatar.png" alt="avatar" />
@@ -171,9 +209,11 @@ const NavBar = () => {
 
           {/* Logout button */}
           {showLogout === true ? (
-            <div className="profile_popup">
+            <div className="profile_popup" ref={ref4}>
               <button className="jakarta">See Profile</button>
-              <button className="jakarta">Logout</button>
+              <NavLink to="/login">
+                <button className="jakarta">Logout</button>
+              </NavLink>
             </div>
           ) : null}
         </div>
