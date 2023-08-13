@@ -759,4 +759,14 @@
       }
     }
   }
+
+  @media screen and (max-width: 1510px) {
+    .banner_cards {
+      flex-wrap: wrap;
+
+      .bc_center {
+        width: 62%;
+      }
+    }
+  }
 }
