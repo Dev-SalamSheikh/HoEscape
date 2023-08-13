@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AddEmpPopup = ({ setAddEmp }) => {
+const AddEmpPopup = ({ setAddEmp, setEditEmp }) => {
   // Popup btns
   const popupBtns = [
     {
@@ -17,6 +17,12 @@ const AddEmpPopup = ({ setAddEmp }) => {
     },
   ];
 
+  // close popup
+  const closePopup = () => {
+    setEditEmp ? setEditEmp(false) : null;
+    setAddEmp ? setAddEmp(false) : null;
+  };
+
   // select active btn
   const [activeBtn, setActiveBtn] = useState(1);
   return (
@@ -28,7 +34,7 @@ const AddEmpPopup = ({ setAddEmp }) => {
 
           {/* Icon */}
           <svg
-            onClick={() => setAddEmp(false)}
+            onClick={closePopup}
             xmlns="http://www.w3.org/2000/svg"
             width="30"
             height="30"
@@ -135,7 +141,7 @@ const AddEmpPopup = ({ setAddEmp }) => {
         {/* Submit Btns */}
         <div className="submit_btns">
           {/* cancel btn */}
-          <button className="cancel jakarta" onClick={() => setAddEmp(false)}>
+          <button className="cancel jakarta" onClick={closePopup}>
             Delete
           </button>
 

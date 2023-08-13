@@ -4,10 +4,10 @@ import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   // refs
-  const ref = useRef();
-  const ref2 = useRef();
-  const ref3 = useRef();
-  const ref4 = useRef();
+  const ref = useRef(null);
+  const ref2 = useRef(null);
+  const ref3 = useRef(null);
+  const ref4 = useRef(null);
 
   // states
   const [showNotificationPopup, setShowNotificationPopup] = useState(false);
@@ -24,14 +24,14 @@ const NavBar = () => {
     return () => {
       document.removeEventListener("click", closePopup);
     };
-  }, []);
+  }, [ref, ref2]);
 
   // UseEffect Function for Handle Popup Open Close
   useEffect(() => {
     const closePopup = (e) => {
       if (
-        !ref3.current.contains(e.target) &&
-        !ref4.current.contains(e.target)
+        !ref3?.current?.contains(e?.target) &&
+        !ref4?.current?.contains(e?.target)
       ) {
         setShowLogout(false);
       }
@@ -40,7 +40,7 @@ const NavBar = () => {
     return () => {
       document.removeEventListener("click", closePopup);
     };
-  }, []);
+  }, [ref3, ref4]);
 
   return (
     <div className="navbar">
@@ -161,8 +161,9 @@ const NavBar = () => {
           </div>
 
           {/* Notifications popup*/}
+
           {showNotificationPopup === true ? (
-            <div className="notification_popup" ref={ref2}>
+            <div className="notification_popup">
               <ul>
                 <li className="jakarta">Notification 1</li>
                 <li className="jakarta">Notification 2</li>

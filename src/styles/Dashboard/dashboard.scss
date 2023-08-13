@@ -361,8 +361,21 @@
           border: 1px solid $sortBorder;
           padding: 7px 16px;
           border-radius: 6px;
+          overflow: hidden;
           display: flex;
           align-items: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: $themeBlue;
+            svg {
+              fill: #fff;
+            }
+            select {
+              color: #fff;
+            }
+          }
           gap: 4px;
 
           select {
@@ -376,6 +389,10 @@
             font-weight: 500;
             line-height: 21px;
             color: $lightBlack;
+
+            option {
+              background-color: $themeBlue;
+            }
           }
         }
         .add {
@@ -387,6 +404,15 @@
           align-items: center;
           gap: 4px;
           cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: $secondaryBlack;
+
+            p {
+              color: #fff;
+            }
+          }
 
           p {
             color: $lightBlack;
@@ -431,6 +457,8 @@
             font-size: 24px;
             font-weight: 600;
             color: $lightBlack;
+            line-height: 0;
+            padding-bottom: 10px;
           }
 
           svg {
@@ -584,10 +612,16 @@
             font-size: 14px;
             border-radius: 6px;
             cursor: pointer;
+            transition: all 0.2s ease;
 
             &.cancel {
               color: $btnRed;
               border: 1px solid $hrColor;
+
+              &:hover {
+                background-color: $btnRed;
+                color: #fff;
+              }
             }
 
             &.next {
@@ -660,6 +694,12 @@
             font-weight: 500;
             line-height: 21px;
             cursor: pointer;
+            transition: all 0.2s ease;
+
+            &:hover {
+              background-color: $themeBlue;
+              color: #fff;
+            }
           }
         }
       }

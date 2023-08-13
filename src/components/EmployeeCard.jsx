@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import AddEmpPopup from "../components/AddEmpPopup";
 
 const EmployeeCard = () => {
+  //States
   const [showEmpStatistics, setShowEmpStatistics] = useState(false);
+  const [editEmp, setEditEmp] = useState(false);
 
   return (
     <div className="employee_card">
@@ -28,8 +31,12 @@ const EmployeeCard = () => {
 
         {/* right */}
         <div className="right">
-          <button className="jakarta">Edit</button>
+          <button className="jakarta" onClick={() => setEditEmp(true)}>
+            Edit
+          </button>
         </div>
+
+        {editEmp === true ? <AddEmpPopup setEditEmp={setEditEmp} /> : null}
       </div>
 
       {/* Bottom part */}
