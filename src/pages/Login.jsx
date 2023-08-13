@@ -13,17 +13,17 @@ const Login = () => {
 
       {/* Overlay One */}
       <div className="overlay_one">
-        <img src="./images/login-overlay-1.svg" alt="" />
+        <img src="./images/login-overlay-1.png" alt="" />
       </div>
 
       {/* Overlay One */}
       <div className="overlay_two">
-        <img src="./images/login-overlay-2.svg" alt="" />
+        <img src="./images/login-overlay-2.png" alt="" />
       </div>
 
       {/* Overlay One */}
       <div className="overlay_three">
-        <img src="./images/login-overlay-3.svg" alt="" />
+        <img src="./images/login-overlay-3.png" alt="" />
       </div>
 
       {/* Form */}
