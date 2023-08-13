@@ -369,6 +369,7 @@
 
           &:hover {
             background-color: $themeBlue;
+            transform: translateX(-5px);
             svg {
               fill: #fff;
             }
@@ -408,6 +409,7 @@
 
           &:hover {
             background-color: $secondaryBlack;
+            transform: translateX(5px);
 
             p {
               color: #fff;
@@ -612,7 +614,7 @@
             font-size: 14px;
             border-radius: 6px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
 
             &.cancel {
               color: $btnRed;
@@ -621,6 +623,7 @@
               &:hover {
                 background-color: $btnRed;
                 color: #fff;
+                transform: translateX(5px);
               }
             }
 
@@ -628,6 +631,11 @@
               background-color: $themeBlue;
               color: #fff;
               border: 1px solid $themeBlue;
+              transition: all 0.3s ease;
+
+              &:hover {
+                transform: translateX(-5px);
+              }
             }
           }
         }
